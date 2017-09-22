@@ -88,11 +88,13 @@ public class NYTDoc implements Data {
             }
         }
         pub_date = json.optString("pub_date", "");
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
-        try {
-            pub_date_milliseconds = sdf.parse(pub_date).getTime();
-        } catch (ParseException e) {
-            e.printStackTrace();
+        if(!TextUtils.isEmpty(pub_date)) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
+            try {
+                pub_date_milliseconds = sdf.parse(pub_date).getTime();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
         document_type = json.optString("document_type", "");
         new_desk = json.optString("new_desk", "");
