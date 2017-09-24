@@ -8,6 +8,7 @@ import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.TextHttpResponseHandler;
 import com.mintminter.simplenewyorktimes.interfaces.ApiCallback;
 import com.mintminter.simplenewyorktimes.models.NYTSearchResult;
+import com.mintminter.simplenewyorktimes.models.SearchParams;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -16,23 +17,27 @@ import cz.msebera.android.httpclient.Header;
  */
 
 public class ApiManager {
-    public void getSearchResult(String q, String beginDate, String endDate, String sort, String newsDesk, int page, final ApiCallback apiCallback){
+    public void getSearchResult(SearchParams searchParams, final ApiCallback apiCallback){
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
         params.put("api-key", Bootstrap.NYTAPIKEY);
-        if(!TextUtils.isEmpty(q)) {
-            params.put("q", q);
+        if(!TextUtils.isEmpty(searchParams.q)) {
+            params.put("q", searchParams.q);
         }
-        if(!TextUtils.isEmpty(beginDate)) {
-            params.put("begin_date", beginDate);
+        if(!TextUtils.isEmpty(searchParams.begin_date)) {
+            params.put("begin_date", searchParams.begin_date);
         }
-        if(!TextUtils.isEmpty(endDate)) {
-            params.put("end_date", endDate);
+        if(!TextUtils.isEmpty(searchParams.end_date)) {
+            params.put("end_date", searchParams.end_date);
         }
-        if(!TextUtils.isEmpty(sort)) {
-            params.put("sort", sort);
+        if(!TextUtils.isEmpty(searchParams.sort)) {
+            params.put("sort", searchParams.sort);
         }
-        params.put("page", page);
+        params.put("page", searchParams.page);
+        String fq = searchParams.genFq();
+        if(!TextUtils.isEmpty(fq)){
+            params.put("fq", fq);
+        }
         client.get(Bootstrap.getSearchApi(), params, new TextHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, String res) {

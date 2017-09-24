@@ -13,11 +13,12 @@ import com.mintminter.simplenewyorktimes.api.ApiManager;
 import com.mintminter.simplenewyorktimes.interfaces.ApiCallback;
 import com.mintminter.simplenewyorktimes.interfaces.ContinueCallBack;
 import com.mintminter.simplenewyorktimes.models.NYTSearchResult;
+import com.mintminter.simplenewyorktimes.models.SearchParams;
 
 public class MainActivity extends AppCompatActivity implements ApiCallback, ContinueCallBack{
 
     private RecyclerView mDocList;
-    private int mCurrentPage = 0;
+    private SearchParams mSearchParams = new SearchParams();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +28,13 @@ public class MainActivity extends AppCompatActivity implements ApiCallback, Cont
         mDocList.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         mDocList.setAdapter(new DocAdapter(this, this));
 
-        new ApiManager().getSearchResult("", null, null, null, null, mCurrentPage, this);
+
+        new ApiManager().getSearchResult(mSearchParams, this);
     }
 
     @Override
     public void setSearchResult(NYTSearchResult searchResult) {
-        mCurrentPage++;
+        mSearchParams.page++;
         ((DocAdapter) mDocList.getAdapter()).append(searchResult.response.docs);
 
     }
@@ -44,6 +46,6 @@ public class MainActivity extends AppCompatActivity implements ApiCallback, Cont
 
     @Override
     public void continueLoading() {
-        new ApiManager().getSearchResult("", null, null, null, null, mCurrentPage, this);
+        new ApiManager().getSearchResult(mSearchParams, this);
     }
 }
