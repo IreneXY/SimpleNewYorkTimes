@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
 
 import com.mintminter.simplenewyorktimes.R;
 import com.mintminter.simplenewyorktimes.adapter.DocAdapter;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements ApiCallback, Cont
 
     private RecyclerView mDocList;
     private SearchView mSearchView;
+    private RelativeLayout mProgressArea;
     private SearchParams mSearchParams = new SearchParams();
 
     @Override
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements ApiCallback, Cont
         mDocList.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         mDocList.setAdapter(new DocAdapter(this, this));
 
+        mProgressArea = (RelativeLayout) findViewById(R.id.main_progressbar);
 
         query(false);
     }
@@ -94,6 +97,9 @@ public class MainActivity extends AppCompatActivity implements ApiCallback, Cont
     private void query(boolean bAppendResult){
         if(!bAppendResult){
             mSearchParams.page = 0;
+            mProgressArea.setVisibility(View.VISIBLE);
+        }else{
+            mProgressArea.setVisibility(View.GONE);
         }
         new ApiManager().getSearchResult(mSearchParams, bAppendResult, this);
     }
@@ -105,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements ApiCallback, Cont
         if(!bAppendResult){
             mDocList.scrollToPosition(0);
         }
-
+        mProgressArea.setVisibility(View.GONE);
     }
 
     @Override

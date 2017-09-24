@@ -16,6 +16,20 @@
         app:contentInsetStart="0dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
 
+    <RelativeLayout
+        android:id="@+id/main_progressbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black_semi_99">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/main_doclist"
         style="@style/div"
