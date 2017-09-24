@@ -17,7 +17,7 @@ import cz.msebera.android.httpclient.Header;
  */
 
 public class ApiManager {
-    public void getSearchResult(SearchParams searchParams, final ApiCallback apiCallback){
+    public void getSearchResult(SearchParams searchParams, final boolean bAppendResult, final ApiCallback apiCallback){
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
         params.put("api-key", Bootstrap.NYTAPIKEY);
@@ -45,7 +45,7 @@ public class ApiManager {
                         Log.i("@getSearchResult res ", res);
                         NYTSearchResult searchResult = new NYTSearchResult();
                         searchResult.fromJsonString(res);
-                        apiCallback.setSearchResult(searchResult);
+                        apiCallback.setSearchResult(searchResult, bAppendResult);
                     }
 
                     @Override

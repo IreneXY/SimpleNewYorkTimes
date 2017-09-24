@@ -35,8 +35,12 @@ public class DocAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         mContext = context;
     }
 
-    public void append(ArrayList<NYTDoc> docs){
-        mDocList.addAll(docs);
+    public void bind(ArrayList<NYTDoc> docs, boolean bAppend){
+        if(bAppend) {
+            mDocList.addAll(docs);
+        }else{
+            mDocList = docs;
+        }
         notifyDataSetChanged();
     }
 
@@ -72,7 +76,6 @@ public class DocAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         public void bind(int position){
             final NYTDoc doc = mDocList.get(position);
             String thumbnailUrl = doc.getThumbnailUrl();
-            Log.i("Irene", "thumbnailUrl = " + thumbnailUrl);
             if(!TextUtils.isEmpty(thumbnailUrl) &&
                     Common.isUrl(thumbnailUrl)) {
                 mPoster.setVisibility(View.VISIBLE);

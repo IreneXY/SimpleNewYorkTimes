@@ -66,7 +66,6 @@ public class NYTDoc implements Data {
         if(json == null){
             return;
         }
-        Log.i("Irene", "json = " + json.toString());
         web_url = json.optString("web_url", "");
         snippet = json.optString("snippet", "");
         source = json.optString("source", "");

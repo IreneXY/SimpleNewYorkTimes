@@ -7,6 +7,6 @@ import com.mintminter.simplenewyorktimes.models.NYTSearchResult;
  */
 
 public interface ApiCallback {
-    void setSearchResult(NYTSearchResult searchResult);
+    void setSearchResult(NYTSearchResult searchResult, boolean bAppendResult);
     void setFailure(int statusCode, String res);
 }
