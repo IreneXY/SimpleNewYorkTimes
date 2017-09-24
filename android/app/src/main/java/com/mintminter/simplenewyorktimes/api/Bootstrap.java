@@ -8,7 +8,7 @@ import com.mintminter.simplenewyorktimes.BuildConfig;
 
 public class Bootstrap {
     public static final String NYTAPIKEY = BuildConfig.NYTAPIKEY;
-
+    public static final String NYT_URL = "http://www.nytimes.com/";
     public static final String BASEURL_NYT = "https://api.nytimes.com/svc/search/v2";
 
     public static final String ENDPOINT_SEARCH = "/articlesearch.json";
@@ -19,5 +19,9 @@ public class Bootstrap {
 
     public static final String getSearchApi(){
         return getApi(ENDPOINT_SEARCH);
+    }
+
+    public static final String getImageURL(String endpoint){
+        return NYT_URL + endpoint;
     }
 }

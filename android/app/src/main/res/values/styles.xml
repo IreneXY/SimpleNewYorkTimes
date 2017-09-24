@@ -1,11 +1,43 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.Splash" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
+
+    <style name="div">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="div.vlist" parent="div">
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="div.hlist" parent="div">
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="h1" parent="div">
+        <item name="android:textSize">@dimen/h1</item>
+        <item name="android:textColor">@color/grey800</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="h2" parent="h1">
+        <item name="android:textSize">@dimen/h2</item>
+    </style>
+
+    <style name="p" parent="div">
+        <item name="android:textSize">@dimen/p</item>
+        <item name="android:textColor">@color/grey700</item>
     </style>
 
 </resources>

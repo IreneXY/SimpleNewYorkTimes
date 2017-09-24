@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/div.vlist"
+    android:gravity="center"
+    android:padding="@dimen/margin_normal"
+    android:background="@drawable/bg_doc"
+    android:layout_margin="@dimen/margin_mid">
+    <ImageView
+        android:id="@+id/item_doc_poster"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitStart"/>
+    <TextView
+        android:id="@+id/item_doc_title"
+        style="@style/h1" />
+    <TextView
+        android:id="@+id/item_doc_content"
+        style="@style/p" />
+</LinearLayout>

@@ -1,7 +1,9 @@
 package com.mintminter.simplenewyorktimes.models;
 
 import android.text.TextUtils;
+import android.util.Log;
 
+import com.mintminter.simplenewyorktimes.api.Bootstrap;
 import com.mintminter.simplenewyorktimes.interfaces.Data;
 
 import org.json.JSONArray;
@@ -64,6 +66,7 @@ public class NYTDoc implements Data {
         if(json == null){
             return;
         }
+        Log.i("Irene", "json = " + json.toString());
         web_url = json.optString("web_url", "");
         snippet = json.optString("snippet", "");
         source = json.optString("source", "");
@@ -157,5 +160,31 @@ public class NYTDoc implements Data {
     @Override
     public String toJsonString() {
         return toJson().toString();
+    }
+
+    public String getThumbnailUrl(){
+        if(multimedias!= null && multimedias.size() > 0){
+            for(NYTMultimedia media : multimedias){
+                if("thumbnail".equals(media.subtype)){
+                    return Bootstrap.getImageURL(media.url);
+                }
+            }
+        }
+
+        return "";
+    }
+
+    public String getTitle(){
+        String res = "";
+        if(headline != null){
+            res = headline.main;
+            if(TextUtils.isEmpty(res)){
+                res = headline.print_headline;
+            }
+            if(TextUtils.isEmpty(res)){
+                res = headline.kicker;
+            }
+        }
+        return res;
     }
 }
