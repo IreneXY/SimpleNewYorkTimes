@@ -9,5 +9,6 @@
     <dimen name="p">12sp</dimen>
 
     <dimen name="height_toolbar">56dp</dimen>
+    <dimen name="height_button">36dp</dimen>
 
 </resources>

@@ -5,13 +5,16 @@ import android.util.Log;
 
 import com.mintminter.simplenewyorktimes.api.Bootstrap;
 import com.mintminter.simplenewyorktimes.interfaces.Data;
+import com.mintminter.simplenewyorktimes.util.Common;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /**
@@ -91,7 +94,7 @@ public class NYTDoc implements Data {
         }
         pub_date = json.optString("pub_date", "");
         if(!TextUtils.isEmpty(pub_date)) {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
+            SimpleDateFormat sdf = new SimpleDateFormat(Common.SIMPLEDATEFORMAT_PUB_DATE);
             try {
                 pub_date_milliseconds = sdf.parse(pub_date).getTime();
             } catch (ParseException e) {

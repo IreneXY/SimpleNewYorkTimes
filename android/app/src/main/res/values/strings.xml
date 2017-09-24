@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SimpleNewYorkTimes</string>
+    <string-array name="sort_array">
+        <item>Newest</item>
+        <item>Oldest</item>
+    </string-array>
 </resources>

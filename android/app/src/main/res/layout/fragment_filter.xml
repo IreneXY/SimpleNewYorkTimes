@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/div.vlist"
+    android:padding="@dimen/margin_normal"
+    android:layout_margin="@dimen/margin_normal"
+    android:background="@color/white">
+
+    <LinearLayout
+        style="@style/div.hlist"
+        android:weightSum="2"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_doc"
+        android:padding="@dimen/margin_normal">
+        <TextView
+            style="@style/h2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="Begin Date:"/>
+
+        <RelativeLayout
+            android:id="@+id/filter_begindate_actionarea"
+            style="@style/div.hlist"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical">
+            <TextView
+                android:id="@+id/filter_begindate_date"
+                style="@style/p"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="text"/>
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_calendar"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/div.hlist"
+        android:weightSum="2"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_doc"
+        android:padding="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_mid">
+        <TextView
+            style="@style/h2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="End Date:"/>
+
+        <RelativeLayout
+            android:id="@+id/filter_enddate_actionarea"
+            style="@style/div.hlist"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical">
+            <TextView
+                android:id="@+id/filter_enddate_date"
+                style="@style/p"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="text"/>
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_calendar"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/div.hlist"
+        android:weightSum="2"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_doc"
+        android:padding="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_mid">
+        <TextView
+            style="@style/h2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="Sort:"/>
+
+        <Spinner
+            android:id="@+id/filter_sort"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:entries="@array/sort_array"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/div.hlist"
+        android:weightSum="2"
+        android:gravity="top|center_vertical"
+        android:background="@drawable/bg_doc"
+        android:padding="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_mid">
+        <TextView
+            style="@style/h2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:text="News Desk:"/>
+
+        <LinearLayout
+            style="@style/div.vlist"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="right|center_vertical">
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/filter_arts"
+                style="@style/p"
+                app:buttonTint="@color/colorPrimaryDark"
+                android:text="Arts"/>
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/filter_fashion"
+                style="@style/p"
+                app:buttonTint="@color/colorPrimaryDark"
+                android:text="Fashion &amp; Style"/>
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/filter_sports"
+                style="@style/p"
+                app:buttonTint="@color/colorPrimaryDark"
+                android:text="Sports"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    
+    <LinearLayout
+        style="@style/div.hlist"
+        android:layout_weight="2"
+        android:layout_marginTop="@dimen/margin_big">
+        <TextView
+            android:id="@+id/filter_reset"
+            style="@style/button.grey"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="RESET"
+            android:layout_marginRight="@dimen/margin_mid"/>
+        <TextView
+            android:id="@+id/filter_confirm"
+            style="@style/button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="COMFIRM"
+            android:layout_marginLeft="@dimen/margin_mid"/>
+    </LinearLayout>
+
+</LinearLayout>
