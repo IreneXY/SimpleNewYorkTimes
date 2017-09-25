@@ -38,11 +38,16 @@ public class MainActivity extends AppCompatActivity implements ApiCallback, Cont
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         toolbar.setTitle("NYT");
+        toolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mDocList.scrollToPosition(0);
+            }
+        });
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.mipmap.ic_launcher);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
-
 
         mDocList = (RecyclerView) findViewById(R.id.main_doclist);
         mDocList.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
@@ -64,9 +69,6 @@ public class MainActivity extends AppCompatActivity implements ApiCallback, Cont
     public boolean onOptionsItemSelected(final MenuItem item) {
         int id = item.getItemId();
         switch (id){
-            case android.R.id.home:
-                mDocList.scrollToPosition(0);
-                break;
             case R.id.action_search:
                 mSearchView = (SearchView) item.getActionView();
                 mSearchView.setSubmitButtonEnabled(true);
