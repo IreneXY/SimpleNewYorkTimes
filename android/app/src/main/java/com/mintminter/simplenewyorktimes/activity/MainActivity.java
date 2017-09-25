@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -123,7 +124,9 @@ public class MainActivity extends AppCompatActivity implements ApiCallback, Cont
 
     @Override
     public void setFailure(int statusCode, String res) {
-        Toast.makeText(this, res, Toast.LENGTH_LONG).show();
+        if(!TextUtils.isEmpty(res) && statusCode > 400 && statusCode != 429) {
+            Toast.makeText(this, statusCode + ": " + res, Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
