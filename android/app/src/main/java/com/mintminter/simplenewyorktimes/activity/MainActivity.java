@@ -1,5 +1,6 @@
 package com.mintminter.simplenewyorktimes.activity;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -56,42 +57,47 @@ public class MainActivity extends AppCompatActivity implements ApiCallback, Cont
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
-        final MenuItem searchMenuItem = menu.findItem( R.id.action_search);
-        mSearchView = (SearchView) searchMenuItem.getActionView();
-        mSearchView.setSubmitButtonEnabled(true);
-        mSearchView.setOnSearchClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mSearchView.setQuery(mSearchParams.q, false);
-            }
-        });
-        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                // Toast like print
-                mSearchParams.q = query;
-                query(false);
-                searchMenuItem.collapseActionView();
-                return false;
-            }
-            @Override
-            public boolean onQueryTextChange(String s) {
-                return false;
-            }
-        });
+        return true;
+    }
 
-        MenuItem filterMenuItem = menu.findItem( R.id.action_filter);
-        filterMenuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
+    @Override
+    public boolean onOptionsItemSelected(final MenuItem item) {
+        int id = item.getItemId();
+        switch (id){
+            case android.R.id.home:
+                mDocList.scrollToPosition(0);
+                break;
+            case R.id.action_search:
+                mSearchView = (SearchView) item.getActionView();
+                mSearchView.setSubmitButtonEnabled(true);
+                mSearchView.setOnSearchClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        mSearchView.setQuery(mSearchParams.q, false);
+                    }
+                });
+                mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                    @Override
+                    public boolean onQueryTextSubmit(String query) {
+                        mSearchParams.q = query;
+                        query(false);
+                        item.collapseActionView();
+                        return false;
+                    }
+                    @Override
+                    public boolean onQueryTextChange(String s) {
+                        return false;
+                    }
+                });
+                break;
+            case R.id.action_filter:
                 FragmentManager fm = getSupportFragmentManager();
                 FilterDialogFragment filterDialogFragment = FilterDialogFragment.newInstance(mSearchParams);
                 filterDialogFragment.setSearchParamsCallback(MainActivity.this);
                 filterDialogFragment.show(fm, FilterDialogFragment.TAG);
-                return false;
-            }
-        });
-        return true;
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void query(boolean bAppendResult){
