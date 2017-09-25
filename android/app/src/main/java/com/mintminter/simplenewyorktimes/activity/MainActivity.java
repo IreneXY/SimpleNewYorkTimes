@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.mintminter.simplenewyorktimes.R;
 import com.mintminter.simplenewyorktimes.adapter.DocAdapter;
@@ -124,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements ApiCallback, Cont
 
     @Override
     public void setFailure(int statusCode, String res) {
-
+        Toast.makeText(this, res, Toast.LENGTH_LONG).show();
     }
 
     @Override
