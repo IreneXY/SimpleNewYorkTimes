@@ -52,9 +52,11 @@ Here's a walkthrough of implemented user stories:
 [MP4 Video](https://github.com/IreneXY/SimpleNewYorkTimes/blob/master/video/simplenytvideo.mp4)
 
 GIF Part I - Search and Filter:
+
 <img src='https://github.com/IreneXY/SimpleNewYorkTimes/blob/master/video/searchAndFilter.gif' title='GIF Walkthrough Part I Search and Filter' width='' alt='GIF Walkthrough Part I Search and Filter' />
 
 GIF Part II - Detail and Share:
+
 <img src='https://github.com/IreneXY/SimpleNewYorkTimes/blob/master/video/detailAndShare.gif' title='GIF Walkthrough Part II Detail and share' width='' alt='GIF Walkthrough Part II Detail and share' />
 
 GIF created with [EZGIF.com](https://ezgif.com/video-to-gif).
