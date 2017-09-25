@@ -10,10 +10,12 @@ import java.util.ArrayList;
 
 @Parcel
 public class SearchParams {
+    public static final String SORT_NEWEST = "Newest";
+
     public String q = "";
     public String begin_date = "";
     public String end_date = "";
-    public String sort = "newest";
+    public String sort = SORT_NEWEST.toLowerCase();
     public ArrayList<String> news_desk = new ArrayList<>();
     public int page = 0;
 

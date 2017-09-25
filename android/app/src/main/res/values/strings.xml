@@ -4,4 +4,19 @@
         <item>Newest</item>
         <item>Oldest</item>
     </string-array>
+    <string name="title">NYT</string>
+    <string name="share_selection">Sharing Option</string>
+    <string name="filter_title">Filter</string>
+    <string name="filter_begindate">Begin Date:</string>
+    <string name="filter_enddate">End Date:</string>
+    <string name="filter_sort">Sort:</string>
+    <string name="filter_newsdesk">News Desk:</string>
+    <string name="filter_newsdesk_arts">Arts</string>
+    <string name="filter_newsdesk_fashion">Fashion &amp; Style</string>
+    <string name="filter_newsdesk_sports">Sports</string>
+    <string name="filter_reset">RESET</string>
+    <string name="filter_confirm">CONFIRM</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_filter">Filter</string>
 </resources>

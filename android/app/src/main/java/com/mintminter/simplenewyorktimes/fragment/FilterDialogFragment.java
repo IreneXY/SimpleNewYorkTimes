@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -85,7 +84,7 @@ public class FilterDialogFragment extends DialogFragment implements DatePickerDi
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mSearchParams = Parcels.unwrap(getArguments().getParcelable(Common.EXTRA_SEARCHPARAM));
-        getDialog().setTitle("Search Filter");
+        getDialog().setTitle(Common.getString(getActivity(), R.string.filter_title));
 
         mBeginDate.setText(mSearchParams.begin_date);
         mBeginDateArea.setOnClickListener(new View.OnClickListener() {
@@ -107,7 +106,7 @@ public class FilterDialogFragment extends DialogFragment implements DatePickerDi
             }
         });
 
-        if(mSearchParams.sort.toLowerCase().equals("newest")){
+        if(SearchParams.SORT_NEWEST.toLowerCase().equals(mSearchParams.sort.toLowerCase())){
             mSort.setSelection(0);
         }else{
             mSort.setSelection(1);

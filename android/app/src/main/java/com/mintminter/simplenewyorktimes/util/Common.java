@@ -1,9 +1,8 @@
 package com.mintminter.simplenewyorktimes.util;
 
 
+import android.content.Context;
 import android.text.TextUtils;
-import android.util.Log;
-import android.util.Patterns;
 import android.webkit.URLUtil;
 
 import com.mintminter.simplenewyorktimes.models.Time;
@@ -55,5 +54,9 @@ public class Common {
 
     public static Time time(String data){
         return time(dataToMilliSeconds(data));
+    }
+
+    public static String getString(Context context, int resId){
+        return context.getResources().getString(resId);
     }
 }

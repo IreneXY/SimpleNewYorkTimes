@@ -3,7 +3,6 @@ package com.mintminter.simplenewyorktimes.activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
@@ -93,7 +92,7 @@ public class DetailActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.detail_share:
-                startActivity(Intent.createChooser(mShareIntent, "Shearing Option"));
+                startActivity(Intent.createChooser(mShareIntent, Common.getString(this, R.string.share_selection)));
                 break;
         }
         return super.onOptionsItemSelected(item);

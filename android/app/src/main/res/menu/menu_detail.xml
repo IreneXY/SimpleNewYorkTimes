@@ -5,6 +5,6 @@
         android:id="@+id/detail_share"
         android:actionProviderClass="android.widget.ShareActionProvider"
         android:icon="@mipmap/ic_share"
-        android:title="Share"
+        android:title="@string/menu_share"
         app:showAsAction="always" />
 </menu>

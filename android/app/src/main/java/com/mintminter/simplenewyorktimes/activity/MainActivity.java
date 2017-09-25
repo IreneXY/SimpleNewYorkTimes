@@ -1,15 +1,12 @@
 package com.mintminter.simplenewyorktimes.activity;
 
-import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,6 +22,7 @@ import com.mintminter.simplenewyorktimes.interfaces.ContinueCallBack;
 import com.mintminter.simplenewyorktimes.interfaces.SearchParamsCallback;
 import com.mintminter.simplenewyorktimes.models.NYTSearchResult;
 import com.mintminter.simplenewyorktimes.models.SearchParams;
+import com.mintminter.simplenewyorktimes.util.Common;
 
 public class MainActivity extends AppCompatActivity implements ApiCallback, ContinueCallBack, SearchParamsCallback{
 
@@ -38,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements ApiCallback, Cont
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
-        toolbar.setTitle("NYT");
+        toolbar.setTitle(Common.getString(this, R.string.title));
         toolbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

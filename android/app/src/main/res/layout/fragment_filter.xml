@@ -19,7 +19,7 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:text="Begin Date:"/>
+            android:text="@string/filter_begindate"/>
 
         <RelativeLayout
             android:id="@+id/filter_begindate_actionarea"
@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:text="text"/>
+                android:text=""/>
             <ImageView
                 android:layout_width="32dp"
                 android:layout_height="32dp"
@@ -61,7 +61,7 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:text="End Date:"/>
+            android:text="@string/filter_enddate"/>
 
         <RelativeLayout
             android:id="@+id/filter_enddate_actionarea"
@@ -78,7 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:text="text"/>
+                android:text=""/>
             <ImageView
                 android:layout_width="32dp"
                 android:layout_height="32dp"
@@ -103,7 +103,7 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:text="Sort:"/>
+            android:text="@string/filter_sort"/>
 
         <Spinner
             android:id="@+id/filter_sort"
@@ -127,7 +127,7 @@
             android:layout_weight="1"
             android:layout_height="50dp"
             android:gravity="center_vertical"
-            android:text="News Desk:"/>
+            android:text="@string/filter_newsdesk"/>
 
         <LinearLayout
             style="@style/div.vlist"
@@ -138,17 +138,17 @@
                 android:id="@+id/filter_arts"
                 style="@style/p"
                 app:buttonTint="@color/colorPrimaryDark"
-                android:text="Arts"/>
+                android:text="@string/filter_newsdesk_arts"/>
             <android.support.v7.widget.AppCompatCheckBox
                 android:id="@+id/filter_fashion"
                 style="@style/p"
                 app:buttonTint="@color/colorPrimaryDark"
-                android:text="Fashion &amp; Style"/>
+                android:text="@string/filter_newsdesk_fashion"/>
             <android.support.v7.widget.AppCompatCheckBox
                 android:id="@+id/filter_sports"
                 style="@style/p"
                 app:buttonTint="@color/colorPrimaryDark"
-                android:text="Sports"/>
+                android:text="@string/filter_newsdesk_sports"/>
         </LinearLayout>
 
     </LinearLayout>
@@ -162,14 +162,14 @@
             style="@style/button.grey"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:text="RESET"
+            android:text="@string/filter_reset"
             android:layout_marginRight="@dimen/margin_mid"/>
         <TextView
             android:id="@+id/filter_confirm"
             style="@style/button"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:text="COMFIRM"
+            android:text="@string/filter_confirm"
             android:layout_marginLeft="@dimen/margin_mid"/>
     </LinearLayout>
 
