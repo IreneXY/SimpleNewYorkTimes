@@ -1,7 +1,6 @@
 package com.mintminter.simplenewyorktimes.models;
 
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.mintminter.simplenewyorktimes.api.Bootstrap;
 import com.mintminter.simplenewyorktimes.interfaces.Data;
@@ -11,10 +10,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /**
@@ -164,18 +161,6 @@ public class NYTDoc implements Data {
         return toJson().toString();
     }
 
-    public String getThumbnailUrl(){
-        if(multimedias!= null && multimedias.size() > 0){
-            for(NYTMultimedia media : multimedias){
-                if("thumbnail".equals(media.subtype)){
-                    return Bootstrap.getImageURL(media.url);
-                }
-            }
-        }
-
-        return "";
-    }
-
     public String getTitle(){
         String res = "";
         if(headline != null){
@@ -188,5 +173,33 @@ public class NYTDoc implements Data {
             }
         }
         return res;
+    }
+
+    public boolean isSourceNYT(){
+        return "The New York Times".equals(source);
+    }
+
+    public String getWideUrl(){
+        return getImageUrl("wide");
+    }
+
+    public String getThumbnailUrl(){
+        return getImageUrl("thumbnail");
+    }
+
+    public String getImageUrl(String subType){
+        if(multimedias!= null && multimedias.size() > 0){
+            for(NYTMultimedia media : multimedias){
+                if(subType.equals(media.subtype)){
+                    return Bootstrap.getImageURL(media.url);
+                }
+            }
+        }
+
+        return "";
+    }
+
+    public boolean isHighScoreDoc(){
+        return score >= 2.5;
     }
 }

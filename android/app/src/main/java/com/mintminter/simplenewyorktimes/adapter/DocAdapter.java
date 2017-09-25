@@ -26,6 +26,9 @@ import java.util.ArrayList;
  */
 
 public class DocAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    private static final int VIEWTYPE_DOC = 0;
+    private static final int VIEWTYPE_HIGHSCOREDOC = 1;
+
     private Context mContext;
     private ContinueCallBack mCallback;
 
@@ -45,13 +48,32 @@ public class DocAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     @Override
+    public int getItemViewType(int position){
+        NYTDoc doc = mDocList.get(position);
+        if(doc.isHighScoreDoc() && !TextUtils.isEmpty(doc.getWideUrl())){
+            return VIEWTYPE_HIGHSCOREDOC;
+        }else{
+            return VIEWTYPE_DOC;
+        }
+    }
+
+    @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new DocViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_doc, parent, false));
+        if(viewType == VIEWTYPE_HIGHSCOREDOC) {
+            return new HighScoreViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_highscoredoc, parent, false));
+        }else{
+            return new DocViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_doc, parent, false));
+        }
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((DocViewHolder) holder).bind(position);
+        int type = getItemViewType(position);
+        if(type == VIEWTYPE_HIGHSCOREDOC){
+            ((HighScoreViewHolder) holder).bind(position);
+        }else {
+            ((DocViewHolder) holder).bind(position);
+        }
     }
 
     @Override
@@ -85,6 +107,44 @@ public class DocAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             }else{
                 mPoster.setVisibility(View.GONE);
             }
+            mTitle.setText(doc.getTitle());
+            mContent.setText(doc.snippet);
+            mItemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent detailIntent = new Intent(mContext, DetailActivity.class);
+                    detailIntent.putExtra(Common.EXTRA_URL, doc.web_url);
+                    detailIntent.putExtra(Common.EXTRA_TITLE, doc.getTitle());
+                    mContext.startActivity(detailIntent);
+                }
+            });
+            if(position >= (int)(getItemCount() * Common.LEVER_CONTINUELOADING)){
+                mCallback.continueLoading();
+            }
+        }
+    }
+
+    class HighScoreViewHolder extends RecyclerView.ViewHolder{
+
+        private ImageView mPoster;
+        private TextView mTitle;
+        private TextView mContent;
+        private View mItemView;
+
+        public HighScoreViewHolder(View itemView) {
+            super(itemView);
+            mPoster = (ImageView) itemView.findViewById(R.id.item_highscore_poster);
+            mTitle = (TextView) itemView.findViewById(R.id.item_highscore_title);
+            mContent = (TextView) itemView.findViewById(R.id.item_highscore_content);
+            mItemView = itemView;
+        }
+
+        public void bind(int position){
+            final NYTDoc doc = mDocList.get(position);
+            String wideUrl = doc.getWideUrl();
+            Glide.with(mContext)
+                    .load(wideUrl)
+                    .into(mPoster);
             mTitle.setText(doc.getTitle());
             mContent.setText(doc.snippet);
             mItemView.setOnClickListener(new View.OnClickListener() {
