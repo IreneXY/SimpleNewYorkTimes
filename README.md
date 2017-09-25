@@ -63,7 +63,8 @@ GIF created with [EZGIF.com](https://ezgif.com/video-to-gif).
 
 ## Notes
 
-It is so great to use Parceler library to serialize object instead of do it manually.
+1. It is so great to use Parceler library to serialize object instead of do it manually.
+2. To use the SearchView without the Toolbar, we can set its iconfied to be false.
 
 ## Open-source libraries used
 
