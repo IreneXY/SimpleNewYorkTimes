@@ -49,10 +49,15 @@ The following **additional** features are implemented:
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
+[MP4 Video](https://github.com/IreneXY/SimpleNewYorkTimes/blob/master/video/simplenytvideo.mp4)
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+GIF Part I - Search and Filter:
+<img src='https://github.com/IreneXY/SimpleNewYorkTimes/blob/master/video/searchAndFilter.gif' title='GIF Walkthrough Part I Search and Filter' width='' alt='GIF Walkthrough Part I Search and Filter' />
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+GIF Part II - Detail and Share:
+<img src='https://github.com/IreneXY/SimpleNewYorkTimes/blob/master/video/detailAndShare.gif' title='GIF Walkthrough Part II Detail and share' width='' alt='GIF Walkthrough Part II Detail and share' />
+
+GIF created with [EZGIF.com](https://ezgif.com/video-to-gif).
 
 ## Notes
 
